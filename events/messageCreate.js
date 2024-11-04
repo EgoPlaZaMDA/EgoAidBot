@@ -3,10 +3,11 @@ export const messageCreate = async (message) => {
         const setupMessage = await message.channel.send({
             embeds: [{
                 color: 0x0099ff,
-                title: 'Appeal',
-                description: 'To open an appeal, react with 📩.',
+                title: 'Tickets',
+                description: 'To open an appeal, react with 📩.\nTo open a report, react with 📨.',
             }]
         });
         await setupMessage.react('📩');
+        await setupMessage.react('📨');
     }
 }

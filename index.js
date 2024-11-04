@@ -1,6 +1,5 @@
 import { Client, GatewayIntentBits, Partials } from 'discord.js';
 import 'dotenv/config';
-import { createTicket } from './commands/createTicket.js';
 import { interactionCreate } from './events/interactionCreate.js';
 import { messageCreate } from './events/messageCreate.js';
 import { messageReactionAdd } from './events/messageReactionAdd.js';
