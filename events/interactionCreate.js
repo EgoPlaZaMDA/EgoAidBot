@@ -14,17 +14,23 @@ export const interactionCreate = async (interaction) => {
     }
 
     if (interaction.isButton()) {
+        const moderatorRole = interaction.guild.roles.cache.find(role => role.name === 'Moderator');
+        if (!interaction.member.roles.cache.has(moderatorRole.id)) {
+            await interaction.reply({ content: 'Only moderators can use this button.', ephemeral: true });
+            return;
+        }
+
         const thread = interaction.channel;
         console.log(`Button pressed: ${interaction.customId}`);
 
         if (interaction.customId === 'predefined_1' && thread.name.startsWith('appeal-')) {
-            await thread.send('Thank you for your appeal, your request has been successfully processed.');
+            await thread.send('Thank you for your appeal, you\'ve been successfully appealed.');
             await closeTicket(interaction);
         }
 
         if (interaction.customId === 'predefined_2' && thread.name.startsWith('report-')) {
             await thread.send('The player has been successfully punished. Thanks for the report! 🌧️');
-            await closeTicket(interaction);
+            await closeTicket(interaction); 
         }
 
         if (interaction.customId === 'reject' && thread.name.startsWith('appeal-')) {
@@ -41,4 +47,4 @@ export const interactionCreate = async (interaction) => {
 
         await interaction.deferUpdate();
     }
-}
+};
