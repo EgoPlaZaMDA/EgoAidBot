@@ -18,38 +18,22 @@ export const messageReactionAdd = async (reaction, user) => {
         const row1 = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
-                    .setCustomId('predefined_1')
-                    .setLabel('Predefined 1')
-                    .setStyle(ButtonStyle.Primary),
-                new ButtonBuilder()
-                    .setCustomId('predefined_2')
-                    .setLabel('Predefined 2')
-                    .setStyle(ButtonStyle.Primary),
-                new ButtonBuilder()
-                    .setCustomId('predefined_3')
-                    .setLabel('Predefined 3')
-                    .setStyle(ButtonStyle.Primary)
-            );
-
-        const row2 = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
                     .setCustomId('reject')
                     .setLabel('Reject')
-                    .setStyle(ButtonStyle.Danger),
-                new ButtonBuilder()
-                    .setCustomId('incomplete')
-                    .setLabel('Incomplete')
                     .setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder()
+                    .setCustomId('predefined_1')
+                    .setLabel('Appealed')
+                    .setStyle(ButtonStyle.Primary),
                 new ButtonBuilder()
                     .setCustomId('close')
                     .setLabel('Close Ticket')
-                    .setStyle(ButtonStyle.Secondary)
+                    .setStyle(ButtonStyle.Danger)
             );
 
         await thread.send({
             content: `Hello <@${user.id}>, how can we assist you today?`,
-            components: [row1, row2]
+            components: [row1]
         });
     }
 
@@ -61,41 +45,25 @@ export const messageReactionAdd = async (reaction, user) => {
             reason: 'Report thread',
         });
 
-        const row1 = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                    .setCustomId('predefined_1')
-                    .setLabel('Predefined 1')
-                    .setStyle(ButtonStyle.Primary),
-                new ButtonBuilder()
-                    .setCustomId('predefined_2')
-                    .setLabel('Predefined 2')
-                    .setStyle(ButtonStyle.Primary),
-                new ButtonBuilder()
-                    .setCustomId('predefined_3')
-                    .setLabel('Predefined 3')
-                    .setStyle(ButtonStyle.Primary)
-            );
-
         const row2 = new ActionRowBuilder()
             .addComponents(
-                new ButtonBuilder()
-                    .setCustomId('reject')
-                    .setLabel('Reject')
-                    .setStyle(ButtonStyle.Danger),
                 new ButtonBuilder()
                     .setCustomId('incomplete')
                     .setLabel('Incomplete')
                     .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
+                    .setCustomId('predefined_2')
+                    .setLabel('Punished')
+                    .setStyle(ButtonStyle.Primary),
+                new ButtonBuilder()
                     .setCustomId('close')
                     .setLabel('Close Ticket')
-                    .setStyle(ButtonStyle.Secondary)
+                    .setStyle(ButtonStyle.Danger)
             );
 
         await thread.send({
             content: `Hello <@${user.id}>, how can we assist you today?`,
-            components: [row1, row2]
+            components: [row2]
         });
     }
 }
